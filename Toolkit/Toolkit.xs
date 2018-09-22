@@ -183,7 +183,7 @@ Cardinal xt_build_input_arg_list(Widget w, WidgetClass wc, ArgList *arg_list_out
 	arg_list = malloc((EXTRA_ARG_LIST_ROOM + (items >> 1)) * sizeof(Arg));
 
 	while (i < max) {
-	    char *name = SvPV(sp[i], na);
+	    char *name = SvPV(sp[i], PL_na);
 	    ++i;
 
 	    if (SvROK(sp[i])) {
@@ -236,10 +236,10 @@ Cardinal xt_build_input_arg_list(Widget w, WidgetClass wc, ArgList *arg_list_out
 		       integers.  (See the Motif userData resource for some
 		       example code.) */
 
-		    char *obj_type = sv_reftype(obj, TRUE);
+		    char *obj_type = (char*)sv_reftype(obj, TRUE);
 		    if (obj_type && strEQ(obj_type, "X::shared_perl_value")) {
 			SV *sv = (SV *)SvIV(obj);
-			if ((int)sv & 1) {
+			if ((long)sv & 1) {
 			    value = (XtArgVal)(sv);
 #ifdef DEBUG_XT_ARG_LISTS
 			    printf("#2.1: arg[%d] = <'%s', 0x%08x [BOXED]>\n", arg_count, name, value);
@@ -331,7 +331,8 @@ void register_resource_converter_by_name(WidgetClass wc, char *res_name,
 		if (package_name)
 		    r = newSVpv(package_name, strlen(package_name));
 		else
-		    r = newSViv((I32)f);
+		    /* r = newSViv((I32)f); kevin */
+		    r = newSViv((long)f);
 		hv_store(subtable, key, key_len, r, 0);
 	    }
 	    else {
@@ -357,7 +358,8 @@ void register_resource_converter_by_class(char *res_class,
 	if (package_name)
 	    r = newSVpv(package_name, strlen(package_name));
 	else
-	    r = newSViv((I32)f);
+	    /* r = newSViv((I32)f); kevin */
+	    r = newSViv((long)f);
 	hv_store(res_cvt_table_by_class, key, key_len, r, 0);
     }
     else {
@@ -381,7 +383,8 @@ void register_resource_converter_by_type(char *res_type,
 	if (package_name)
 	    r = newSVpv(package_name, strlen(package_name));
 	else
-	    r = newSViv((I32)f);
+	    /* r = newSViv((I32)f); kevin */
+	    r = newSViv((long)f);
 	hv_store(res_cvt_table_by_type, key, key_len, r, 0);
     }
     else {
@@ -437,7 +440,7 @@ SV *xt_convert_OutArg(Widget w, WidgetClass wc, XtOutArg in)
 
     if (entry) {
 	if (SvPOK(*entry)) {
-	    r = sv_setref_pv(sv_newmortal(), SvPV(*entry, na), (void *)in->dst);
+	    r = sv_setref_pv(sv_newmortal(), SvPV(*entry, PL_na), (void *)in->dst);
 	}
 	else {
 	    f = (XtOutArgConverter)SvIV(*entry);
@@ -467,7 +470,7 @@ Cardinal xt_build_output_arg_list(ArgList *arg_list_out, XtOutArgList *arg_info_
 	while (i < items) {
 	    if (SvROK(sp[i]) && sv_derived_from(sp[i], "X::Toolkit::OutArg")) {
 		XtOutArg out = (XtOutArg)SvIV(SvRV(sp[i]));
-		char *res_name = SvPV(out->res_name, na);
+		char *res_name = SvPV(out->res_name, PL_na);
 
 		if (out->res_size <= sizeof(XtArgVal)) {
 		    out->dst = (XtArgVal)0;
@@ -508,10 +511,10 @@ static void run_perl_callback(Widget widget, XtPointer client, XtPointer call)
 	if (closure->client_data)
 	    XPUSHs(closure->client_data);
 	else
-	    XPUSHs(&sv_undef);
+	    XPUSHs(&PL_sv_undef);
 
 	if (closure->call_type) {
-	    char *package = SvPV(SvRV(closure->call_type), na);
+	    char *package = SvPV(SvRV(closure->call_type), PL_na);
 	    XPUSHs(sv_setref_pv(sv_newmortal(), package, (void *)call));
 	}
 
@@ -2322,7 +2325,7 @@ DESTROY(self)
 	PPCODE:
 	    if (SvROK(self)) {
 		SV *value = (SV *)SvIV(SvRV(self));
-		if ((int)value & 1) {
+		if ((long)value & 1) {
 		    /* A "boxed" value is an immediate integer and don't need to
 		       be garbage collected. */
 		}

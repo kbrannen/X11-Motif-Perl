@@ -21,36 +21,30 @@ sub beta_version { 2 };
 sub alias_trimmed_pattern {
     my($pkg, $stab, $pattern) = @_;
 
-    my $key;
-    my $val;
-
-    while (($key, $val) = each(%{$stab})) {
-	local(*entry) = $val;
-	if (defined &entry) {
-	    if ($key =~ s/$pattern//) {
-		no strict 'refs';
-		*{$pkg.'::'.$key} = \&entry;
-	    }
-	}
+    for my $key (keys(%$stab)) {
+        local(*entry) = $stab->{$key};
+        if (defined &entry) {
+            if ($key =~ s/$pattern//) {
+            no strict 'refs';
+            *{$pkg.'::'.$key} = \&entry;
+            }
+        }
     }
 }
 
 sub export_pattern {
     my($stab, $pattern, $pkg) = @_;
 
-    my $key;
-    my $val;
-
     ($pkg) = caller(1) if (!$pkg);
 
-    while (($key, $val) = each(%{$stab})) {
-	local(*entry) = $val;
-	if (defined &entry) {
-	    if ($key =~ /$pattern/) {
-		no strict 'refs';
-		*{$pkg.'::'.$key} = \&entry;
-	    }
-	}
+    for my $key (keys(%$stab)) {
+        local(*entry) = $stab->{$key};
+        if (defined &entry) {
+            if ($key =~ /$pattern/) {
+            no strict 'refs';
+            *{$pkg.'::'.$key} = \&entry;
+            }
+        }
     }
 }
 
