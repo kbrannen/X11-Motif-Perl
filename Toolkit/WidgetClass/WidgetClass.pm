@@ -129,7 +129,7 @@ sub register {
 
     @raw = $self->constraint_resources();
 
-    if (defined @raw)
+    if (scalar @raw)
     {
 	$num = scalar @raw;
 

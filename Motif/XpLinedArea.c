@@ -381,7 +381,7 @@ static void updateGenericScrollSize(XpLinedAreaWidget self, Widget scrollbar, in
     XtVaGetValues(scrollbar,
 		  XmNvalue, &current_pos,
 		  XmNmaximum, &old_maximum,
-		  0);
+		  NULL);
 
     /* If the user didn't give a maximum, just use the
        old value.  This simplifies other parts of the code. */
@@ -420,7 +420,7 @@ static void updateGenericScrollSize(XpLinedAreaWidget self, Widget scrollbar, in
 	       then safeToUpdate is false -- the resize will take
 	       care of the redisplay. */
 
-	    if (XtIsRealized(self) && self->xpLinedArea.safeToUpdate)
+	    if (XtIsRealized((Widget)self) && self->xpLinedArea.safeToUpdate)
 	    {
 		XClearWindow(XtDisplay(self), XtWindow(self));
 		Redisplay(self, 0, 0);
@@ -433,7 +433,7 @@ static void updateGenericScrollSize(XpLinedAreaWidget self, Widget scrollbar, in
 		  XmNsliderSize, slider_size,
 		  XmNpageIncrement, slider_size,
 		  XmNmaximum, maximum,
-		  0);
+		  NULL);
 }
 
 static void updateVScrollSize(XpLinedAreaWidget self, int slider_size, int maximum)
@@ -507,7 +507,7 @@ static void Resize(Widget w)
 {
     XpLinedAreaWidget self = (XpLinedAreaWidget)w;
 
-    if (XtIsRealized(self))
+    if (XtIsRealized(w))
     {
 	self->xpLinedArea.safeToUpdate = False;
 
@@ -639,12 +639,12 @@ static void computeLogicalSize(XpLinedAreaWidget self)
 
     self->xpLinedArea.safeToUpdate = True;
 
-    if (XtIsRealized(self)) {
+    if (XtIsRealized((Widget)self)) {
 	XClearWindow(XtDisplay(self), XtWindow(self));
 	Redisplay(self, 0, 0);
     }
     else if (self->xpLinedArea.width <= self->xpLinedArea.maxDisplayWidth) {
-	XtVaSetValues((Widget)self, XtNwidth, self->xpLinedArea.width, 0);
+	XtVaSetValues((Widget)self, XtNwidth, self->xpLinedArea.width, NULL);
     }
 }
 
@@ -816,13 +816,13 @@ static void Initialize(Widget req_widget, Widget new_widget, ArgList args, Cardi
 							  XmNorientation, XmHORIZONTAL,
 							  XmNminimum, 0,
 							  XmNmaximum, self->core.width,
-							  0);
+							  NULL);
 
 	self->xpLinedArea.vScroll = XtVaCreateManagedWidget("vScroll", xmScrollBarWidgetClass, parent,
 							  XmNorientation, XmVERTICAL,
 							  XmNminimum, 0,
 							  XmNmaximum, self->xpLinedArea.rows,
-							  0);
+							  NULL);
 
 	XtAddCallback(self->xpLinedArea.hScroll, XmNvalueChangedCallback, doHorzScrolling, self);
 	XtAddCallback(self->xpLinedArea.hScroll, XmNdragCallback, doHorzScrolling, self);
@@ -1123,7 +1123,7 @@ void XpLinedAreaScrollToRow(Widget w, int row)
     doVertScrolling(0, (XtPointer)w, (XtPointer)&vscrollto);
 
     if (self->xpLinedArea.vScroll) {
-	XtVaSetValues(self->xpLinedArea.vScroll, XmNvalue, row, 0);
+	XtVaSetValues(self->xpLinedArea.vScroll, XmNvalue, row, NULL);
     }
 }
 

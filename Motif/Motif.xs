@@ -85,7 +85,7 @@ static SV *cvt_from_UserData(Widget w, WidgetClass wc, XtOutArg in)
        an odd pointer is found, it is treated as a boxed integer. */
 
     if (r) {
-	int v = (int)r;
+	long v = (long)r;
 
 	if (v & 1) {
 	    /* A "boxed" value was stored instead of an SV.  This is the
@@ -119,7 +119,7 @@ static SV *cvt_from_UserData(Widget w, WidgetClass wc, XtOutArg in)
 	}
     }
 
-    return &sv_undef;
+    return &PL_sv_undef;
 }
 
 
@@ -381,13 +381,13 @@ void
 XmIsPrimitive(self)
 	Widget		self
 	PPCODE:
-	    if (XmIsPrimitive(self)) { XPUSHs(&sv_yes); } else { XPUSHs(&sv_no); }
+	    if (XmIsPrimitive(self)) { XPUSHs(&PL_sv_yes); } else { XPUSHs(&PL_sv_no); }
 
 void
 XmIsManager(self)
 	Widget		self
 	PPCODE:
-	    if (XmIsManager(self)) { XPUSHs(&sv_yes); } else { XPUSHs(&sv_no); }
+	    if (XmIsManager(self)) { XPUSHs(&PL_sv_yes); } else { XPUSHs(&PL_sv_no); }
 
 
 

@@ -1,2 +1,11 @@
+Version 1.9
++ Modernized code to run with Motif 2.x and Perl 5.26.
++ Changed license to LGPL and moved to "LICENSE".
++ Changed docs to show new maintainer.
++ Removed function beta_version().
++ Removed references to Athena as there was no code for it.
++ Removed references to XRT as it's proprietary and I don't have it to test.
++ Added hello-world.pl example.
+
 Version 1.2a8
-Unmodified code from Ken Fox's website, improved code from 1.1b3 on CPAN.
++ Unmodified code from Ken Fox's website, improved code from 1.1b3 on CPAN.

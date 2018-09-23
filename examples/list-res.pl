@@ -1,12 +1,10 @@
-#!/ford/thishost/unix/div/ap/bin/perl -w
+#!/usr/bin/env perl
 #!../xperl -w
 
 use blib;
 
 use strict;
 use X11::Motif;
-#use X11::Xbae;
-#use X11::XRT;
 
 my %listing_by_type = ();
 my %listing_by_class = ();

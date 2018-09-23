@@ -1,4 +1,4 @@
-#!/ford/thishost/unix/div/ap/bin/perl -w
+#!/usr/bin/env perl
 
 use blib;
 
@@ -6,7 +6,6 @@ use strict;
 use X11::Motif;
 
 print "Using X11::Motif version $X11::Motif::VERSION.\n";
-print "This is beta #", X11::Motif::beta_version(), "\n" if (X11::Motif::beta_version());
 
 my $toplevel = X::Toolkit::initialize("Example");
 

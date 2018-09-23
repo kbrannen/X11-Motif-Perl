@@ -1,17 +1,21 @@
-VERSION 1.2a8
+This is the v1.9 release of the X11::Motif module to update it
+so it will run with modern versions of Perl and Motif, specifically
+Perl 5.26 and Motif 2.3. I hope to have it on CPAN eventually.
 
-The third beta release of the X11::Motif module has been added
-to CPAN.  It is available as:
-
-  file: $CPAN/authors/id/KENFOX/X11-Motif-1.1b3.tar.gz
-  size: 
-   md5: 
+Ken Fox is the original author of this module up thru v1.2a8 and
+previous releases can be found on Cpan at:
+https://metacpan.org/author/KENFOX
 
 The X11::Motif distribution includes X11::Lib, X11::Toolkit,
-X11::Xpm, X11::Xbae and X11::XRT.  An X11::Athena (including
-the 3d, Win95 and NeXTSTEP variants) is in the works.  I'll
-probably have to split the distribution at that point because
-it is just getting too large.
+X11::Xpm, and X11::Xbae.
+
+The original version supported X11::XRT, but I don't have it and
+therefore cannot test it. If you need support for that, see the
+original version or contact me and perhaps we can work something
+out where you are the tester for that part.
+
+The original version and started on X11::Athena, but it was never
+done and I have no motivation to add code for that at this time.
 
 Taken together, these modules provide a nearly complete
 interface to the standard X libraries.  The modules have both
@@ -27,9 +31,9 @@ with this module is an ideal way to add scripting capability to an
 existing Motif application.
 
 This release is very stable and works well.  Production programs
-are being built on top of it.  (The only reason that this version
-is not labeled production is because it is missing complete
-documentation.)
+are being built on top of it. I understand it may not meet the
+standards of production because because it is missing complete
+documentation, but that should be added soon.
 
 I've included two versions of the classic "hello world" example
 at the end of this announcement.  Even if you don't grab the module,
@@ -37,19 +41,28 @@ I'd appreciate feedback on whether the examples are understandable.
 
 To build the modules, you will need:
 
-  * Perl version 5.004 or higher (5.005 hasn't been tested yet)
-  * X11R5 or higher (X11R4 should work but hasn't been tested)
-  * Motif 1.2.4 or higher (CDE Motif works.  Motif 2.0 is reported
-    to work.  LessTif is also reported to work, but with reduced
-    functionality.)
-  * An ANSI C compiler
+  * Perl version 5.026 or higher (It would probably work with several
+    versions lower, but I haven't tested that.)
+  * X11R6 or higher (X11R5 might work but it hasn't been tested)
+  * Motif 2.x or higher (CDE Motif is reported to work.  Motif 1.x
+    would probably work, but has not been tested.  LessTif is also
+    reported to work, but with reduced functionality, but since
+    "real Motif" is freely available just use that.)
+  * An ANSI C compiler, and the usual supporting tools (e.g. make).
 
 I would appreciate being notified of any changes necessary to
 support other environments and/or widget sets.
 
+Any questions or comments?  Please send them to me via the GitHub project
+at https://github.com/kbrannen/X11-Motif-Perl.
+
+- Kevin (Current Maintainer)
+
+# ----------------------------------------------------------------------
+
 Any questions or comments?  Please send them to <fox@vulpes.com>.
 
-- Ken
+- Ken (Original Author)
 
 # ----------------------------------------------------------------------
 # -- Example #1: The object style
@@ -100,3 +113,22 @@ XtSetValues($ok,
 
 XtRealizeWidget($toplevel);
 XtAppMainLoop(XtWidgetToApplicationContext($toplevel));
+
+# ----------------------------------------------------------------------
+# -- Example #3: A hybrid style
+
+use X11::Motif;
+
+my $toplevel = X::Toolkit::initialize("Example");
+
+# create_widget() is an alias for give()
+
+my $form = $toplevel->create_widget("Form");         # -Form would also work
+my $hello = $form->create_widget( "Label", -text => 'Hello, world!' );
+my $ok = $form->create_widget( "Button", -text => 'OK', -command => sub { exit } );
+
+$form->arrange( -fill => 'xy', -bottom => [ $ok, $hello ] );
+
+$toplevel->handle();
+
+# (eof)

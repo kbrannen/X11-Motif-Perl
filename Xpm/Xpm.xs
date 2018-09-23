@@ -96,7 +96,7 @@ CreatePixmapFromData_array(display, d, data_in, visual_in = 0, colormap_in = 0, 
 	    for (r = 0; r < len; ++r) {
 		sv = av_fetch(av, r, 0);
 		if (sv) {
-		    data[r] = SvPV(*sv, na);
+		    data[r] = SvPV(*sv, PL_na);
 		}
 		else {
 		    data[r] = "";

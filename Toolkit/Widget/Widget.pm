@@ -470,7 +470,7 @@ sub build_strict_resource_query_table {
 sub add_callback_set {
     my($self, $type_name, $callbacks) = @_;
 
-    if (defined $callbacks && defined %{$callbacks}) {
+    if (defined $callbacks && %{$callbacks}) {
 	my($cb_name, $proc);
 	while (($cb_name, $proc) = each %{$callbacks}) {
 	    if (ref $proc eq 'ARRAY') {
@@ -702,6 +702,8 @@ sub give {
 
     $child;
 }
+
+*create_widget = \&give;
 
 # --------------------------------------------------------------------------------
 # constrain $widget resource => value, ...

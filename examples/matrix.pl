@@ -1,10 +1,9 @@
-#!/ford/thishost/unix/div/ap/bin/perl -w
+#!/usr/bin/env perl
 
 use blib;
 
 use strict;
 use X11::Motif;
-use X11::Xbae;
 
 my $label_font = '-*-helvetica-bold-r-*-*-*-180-*-*-*-*-*-*';
 my $input_font = '-*-courier-medium-r-*-*-*-180-*-*-*-*-*-*';
