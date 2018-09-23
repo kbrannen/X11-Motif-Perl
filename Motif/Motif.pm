@@ -1,6 +1,7 @@
 package X11::Motif;
 
-# Copyright 1997, 1998 by Ken Fox
+# Copyright 1997, 1998 by Ken Fox (for original work)
+# Copyright 2018 by Kevin Brannen (for new parts)
 
 use DynaLoader;
 
@@ -8,7 +9,7 @@ use strict;
 use vars qw($VERSION @ISA);
 
 BEGIN {
-    $VERSION = 1.1;
+    $VERSION = 1.9;
     @ISA = qw(DynaLoader);
 
     # A widget set is responsible for loading itself and the
@@ -30,7 +31,20 @@ BEGIN {
     X11::Toolkit::use_standard_aliases();
 }
 
-sub beta_version { 2 };
+=head1 X11::Motif
+
+X11::Motif - main interface for Motif to perl
+
+=head1 SYNOPSIS
+
+All the basic Xm* functions should be available. More documentaion later...
+
+=head1 AUTHOR
+
+Original work by Ken Fox, 1998
+Version 1.9+ by Kevin Brannen, 2018
+
+=cut
 
 sub import {
     my $module = shift;

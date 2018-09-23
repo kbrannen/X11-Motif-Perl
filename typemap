@@ -349,7 +349,7 @@ T_XMSTRING_PTR
 	}
 	else {
 	    SV *tmp_ = sv_newmortal();
-	    $var = XmStringCreateSimple(SvPV($arg, na));
+	    $var = XmStringCreateSimple(SvPV($arg, PL_na));
 	    sv_setref_pv(tmp_, XmString_Package, (void *)$var);
 	}
 T_DUMMY

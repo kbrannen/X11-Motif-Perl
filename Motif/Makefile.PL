@@ -20,7 +20,7 @@ if ($want_static_perl) {
     push(@defines, '-DHAVE_TOOLKIT_BOOT');
 }
 
-if (defined @defines) {
+if (@defines) {
     push(@extra_MakeMaker_flags, 'DEFINE' => join(' ', @defines));
 }
 

@@ -8,8 +8,6 @@ $dirs = [ 'Lib', 'Toolkit' ];
 
 push(@{$dirs}, 'Motif') if ($want_motif);
 push(@{$dirs}, 'Xbae') if ($want_xbae);
-push(@{$dirs}, 'XRT') if ($want_xrt);
-push(@{$dirs}, 'Athena') if ($want_athena);
 push(@{$dirs}, 'Xpm') if ($want_xpm);
 
 my @static_options = ();

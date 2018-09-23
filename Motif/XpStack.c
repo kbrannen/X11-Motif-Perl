@@ -120,7 +120,7 @@ static void DisplayActiveChild(XpStackWidget self)
 {
     Widget child, folder;
 
-    if (XtIsRealized(self) && self->xpStack.last_active_child != self->xpStack.active_child)
+    if (XtIsRealized((Widget)self) && self->xpStack.last_active_child != self->xpStack.active_child)
     {
 	if (self->xpStack.last_active_child >= 0)
 	{
@@ -359,7 +359,7 @@ static XpStackWidget XpStackWidgetCast(Widget w)
 	}
 	if (widget_class == xpFolderWidgetClass)
 	{
-	    XtVaGetValues(w, XtNstackWidget, &w, 0);
+	    XtVaGetValues(w, XtNstackWidget, &w, NULL);
 	    return((XpStackWidget)w);
 	}
 	widget_class = widget_class->core_class.superclass;

@@ -15,8 +15,6 @@ BEGIN {
     @ISA = qw();
 }
 
-sub beta_version { 3 };
-
 sub import {
     my $module = shift;
     my %done;

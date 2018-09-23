@@ -1,4 +1,4 @@
-#!../xperl -w
+#!/usr/bin/env perl
 
 #use blib;
 
