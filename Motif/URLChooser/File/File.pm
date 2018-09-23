@@ -176,7 +176,7 @@ sub csh_style_expand {
     my $self = shift;
     my($cwd, $path) = @_;
 
-    $path =~ s|\${([^\}]+)}|$ENV{$1}|eg;
+    $path =~ s|\$\{([^\}]+)}|$ENV{$1}|eg;
     $path =~ s|\$(\w+)|$ENV{$1}|eg;
 
     if ($path =~ s|^~([^/]*)||) {

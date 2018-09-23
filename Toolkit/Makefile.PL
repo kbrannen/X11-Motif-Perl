@@ -13,7 +13,7 @@ if ($has_fast_quarks) {
     push(@defines, '-DHAS_FAST_QUARKS');
 }
 
-if (defined @defines) {
+if (@defines) {
     push(@extra_MakeMaker_flags, 'DEFINE' => join(' ', @defines));
 }
 

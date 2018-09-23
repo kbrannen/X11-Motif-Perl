@@ -14,7 +14,7 @@ SV *
 is_integer(sv)
 	SV *			sv
 	CODE:
-	    RETVAL = (SvIOK(sv)) ? &sv_yes : &sv_no;
+	    RETVAL = (SvIOK(sv)) ? &PL_sv_yes : &PL_sv_no;
 	OUTPUT:
 	    RETVAL
 
@@ -22,7 +22,7 @@ SV *
 is_real(sv)
 	SV *			sv
 	CODE:
-	    RETVAL = (SvNOK(sv)) ? &sv_yes : &sv_no;
+	    RETVAL = (SvNOK(sv)) ? &PL_sv_yes : &PL_sv_no;
 	OUTPUT:
 	    RETVAL
 
@@ -30,7 +30,7 @@ SV *
 is_numeric(sv)
 	SV *			sv
 	CODE:
-	    RETVAL = (SvNOK(sv) || SvIOK(sv)) ? &sv_yes : &sv_no;
+	    RETVAL = (SvNOK(sv) || SvIOK(sv)) ? &PL_sv_yes : &PL_sv_no;
 	OUTPUT:
 	    RETVAL
 
@@ -38,7 +38,7 @@ SV *
 is_string(sv)
 	SV *			sv
 	CODE:
-	    RETVAL = (SvPOK(sv)) ? &sv_yes : &sv_no;
+	    RETVAL = (SvPOK(sv)) ? &PL_sv_yes : &PL_sv_no;
 	OUTPUT:
 	    RETVAL
 
@@ -46,7 +46,7 @@ SV *
 is_object(sv)
 	SV *			sv
 	CODE:
-	    RETVAL = (SvROK(sv) && SvOBJECT(SvRV(sv))) ? &sv_yes : &sv_no;
+	    RETVAL = (SvROK(sv) && SvOBJECT(SvRV(sv))) ? &PL_sv_yes : &PL_sv_no;
 	OUTPUT:
 	    RETVAL
 
@@ -3360,7 +3360,7 @@ int
 id(dpy)
 	Display *		dpy
 	CODE:
-	    RETVAL = (int)dpy;
+	    RETVAL = (long)dpy;
 	OUTPUT:
 	    RETVAL
 
@@ -3395,7 +3395,7 @@ delta(a, b)
 	CODE:
 	    RETVAL = 60000;
 	    if (SvOK(b) && sv_derived_from(b, Time_Package)) {
-		RETVAL = (int)(a - (Time)SvIV(SvRV(b)));
+		RETVAL = (Time)(a - (Time)SvIV(SvRV(b)));
 	    }
 	OUTPUT:
 	    RETVAL

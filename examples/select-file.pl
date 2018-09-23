@@ -1,5 +1,5 @@
+#!/usr/bin/env perl
 #!../xperl -w
-#!/ford/thishost/unix/div/ap/bin/perl -w
 
 use strict;
 use blib;

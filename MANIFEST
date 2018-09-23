@@ -1,9 +1,10 @@
 ANNOUNCE
 README
+CHANGELOG
 config.pm				-- location of X/Motif libraries, etc.
 typemap					-- C to/from perl type translations for all modules
 Artistic				-- Artistic license (same as Perl 5 distribution)
-GPL					-- GNU Copyleft license
+LICENSE					-- GNU Copyleft license
 MANIFEST
 Makefile.PL
 Lib/Lib.pm
@@ -54,13 +55,6 @@ Xbae/Xbae.pm
 Xpm/Makefile.PL
 Xpm/Xpm.pm
 Xpm/Xpm.xs
-XRT/Makefile.PL				-- XRT widget interface
-XRT/constants.dat
-XRT/XRT.in
-XRT/XRT.xs
-XRT/XRTCons.pm
-Athena/Makefile.PL			-- MIT Athena widget interface
-Athena/Athena.pm
 doc/overview
 doc/resources
 examples/cvt-units.pl

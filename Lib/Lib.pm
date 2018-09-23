@@ -16,8 +16,6 @@ BEGIN {
     bootstrap X11::Lib;
 }
 
-sub beta_version { 2 };
-
 sub alias_trimmed_pattern {
     my($pkg, $stab, $pattern) = @_;
 

@@ -1106,7 +1106,7 @@ priv_XtCreatePopupShell(name, widgetClass, parent, ...)
 			XtVaGetValues(shell,
 					XtNdepth, &depth,
 					XtNvisual, &visual,
-					XtNcolormap, &cmap, 0);
+					XtNcolormap, &cmap, NULL);
 			XtSetArg(x_arg[n], XtNdepth, depth);	++n;
 			XtSetArg(x_arg[n], XtNvisual, visual);	++n;
 			XtSetArg(x_arg[n], XtNcolormap, cmap);	++n;
@@ -1164,7 +1164,7 @@ CreateGrayImage(w, sv, max, ncolors = 32, min = 0.0)
 	    }
 	    XtVaGetValues(shell, XtNvisual, &visual,
 			         XtNdepth, &depth,
-				 XtNcolormap, &cmap, 0);
+				 XtNcolormap, &cmap, NULL);
 	    data = XtMalloc(4 * width * height);
 	    RETVAL = XCreateImage(XtDisplay(w), visual, depth,
 				  ZPixmap, 0, data, width, height,

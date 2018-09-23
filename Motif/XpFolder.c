@@ -1,6 +1,7 @@
 
 #include <stdarg.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include <X11/IntrinsicP.h>
 #include <X11/StringDefs.h>
@@ -57,11 +58,14 @@ static XtResource resources[] =
 
 extern WidgetClass xpFolderWidgetClass;
 
+/* FIXME: find out why this causes a problem if not global.
 #if defined(__GNUC__)
 inline
 #else
 static
 #endif
+*/
+static
 int max(int x, int y)
 {
     if (x > y) return(x);
@@ -369,7 +373,7 @@ static void update_tabs_if_necessary(XpFolderWidget self)
 {
     Widget child;
 
-    if (XtIsRealized(self))
+    if (XtIsRealized((Widget)self))
     {
 	child = GetTabsWidget(self);
 	XClearWindow(XtDisplay(child), XtWindow(child));
@@ -514,11 +518,11 @@ static void Realize(Widget w, XtValueMask *value_mask, XSetWindowAttributes *att
 
     XtVaSetValues(GetLeftArrowWidget(self),
 		  XmNlabelPixmap, self->xpFolder.left_arrow_pixmap,
-		  0);
+		  NULL);
 
     XtVaSetValues(GetRightArrowWidget(self),
 		  XmNlabelPixmap, self->xpFolder.right_arrow_pixmap,
-		  0);
+		  NULL);
 }
 
 static Boolean SetValues(Widget old_widget, Widget req_widget, Widget new_widget,
@@ -726,7 +730,7 @@ static void Initialize(Widget req_widget, Widget new_widget, ArgList args, Cardi
 				XtNwidth, DEFAULT_WIDTH,
 				XtNheight, 400,
 				XtNborderWidth, 0,
-				0);
+				NULL);
 
     w = XtVaCreateManagedWidget("tabs", coreWidgetClass, new_widget,
 				XtNx, margin,
@@ -735,7 +739,7 @@ static void Initialize(Widget req_widget, Widget new_widget, ArgList args, Cardi
 				XtNheight, self->xpFolder.tab_height,
 				XtNborderWidth, 0,
 				XtNbackground, self->core.background_pixel,
-				0);
+				NULL);
 
     XtAddEventHandler(w, ExposureMask, False, handle_tab_exposures, 0);
     XtAddEventHandler(w, ButtonReleaseMask, False, handle_tab_clicking, 0);
@@ -750,7 +754,7 @@ static void Initialize(Widget req_widget, Widget new_widget, ArgList args, Cardi
 				XmNlabelType, XmPIXMAP,
 				XmNrecomputeSize, False,
 				XtNmappedWhenManaged, False,
-				0);
+				NULL);
 
     XtAddCallback(w, XmNactivateCallback, scroll_left, self);
 
@@ -764,7 +768,7 @@ static void Initialize(Widget req_widget, Widget new_widget, ArgList args, Cardi
 				XmNlabelType, XmPIXMAP,
 				XmNrecomputeSize, False,
 				XtNmappedWhenManaged, False,
-				0);
+				NULL);
 
     XtAddCallback(w, XmNactivateCallback, scroll_right, self);
 

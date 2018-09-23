@@ -1,4 +1,4 @@
-#!/ford/thishost/unix/div/ap/bin/perl -w
+#!/usr/bin/env perl
 
 #use blib;
 

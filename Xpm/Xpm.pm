@@ -14,8 +14,6 @@ BEGIN {
     bootstrap X11::Xpm;
 }
 
-sub beta_version { 3 };
-
 package X::Xpm;
 
 sub CreatePixmap {
