@@ -66,3 +66,82 @@ I'd like to do something similar for the basic X interface as well.  X
 programmers desperately need a higher level drawing interface to
 automatically manage graphic contexts and exposures.  There are many freely
 available libraries that this work could be based on.
+
+As shown above, you can create a widget using give(), see X11/Toolkit/Widget.pm.
+There is also an alias to that named create_widget() if that feels more normal.
+That would make the example above to be:
+
+    my $button = create_widget $parent -button, -text => 'OK', -command => sub { exit };
+    -or-
+    my $button = create_widget($parent, "-button", -text => 'OK', -command => sub { exit });
+
+To see all of the "other" interfaces that you're likely to want to use, you'll want
+to go look at (blib/lib/auto/) X11/Toolkit/Widget.pm and search for "Utility functions".
+
+    Realize $widget
+    Manage $widget
+    Unmanage $widget
+    $ac = GetContext $widget   # get ApplicationContext
+    $name = FullName $widget   # get full parent tree
+    $bool = IsManaged $widget  # experimental!
+
+    change $widget resource => value, ...
+    synth_get_name $widget
+    synth_get_parent $widget
+    synth_get_managed $widget
+    synth_set_mapped $widget
+    $widget = give parent type resource => value, ...
+    $widget = create_widget parent type resource => value, ...
+    constrain $widget resource => value, ...
+    (value, ...) = query $widget resource, ...
+    handle $widget # tell the widget to display itself and then start handling
+                   # all input events.
+    set_inherited_resources $widget
+
+    XtAddCallback($widget, $cb_name, $proc, $client_data)
+    XtSetValues($widget, resource, value, ...)
+    @a = XtGetValues($widget, resource, ...)
+
+If you want to know what the widget aliases (e.g. that "-button" maps to
+xmPushButtonWidgetClass, then see X11/Motif.pm. As a list, there is:
+
+    -bulletinboard
+    -button
+    -canvas
+    -dialog
+    -dialogshell
+    -drawingarea
+    -editor
+    -field
+    -folder
+    -form
+    -frame
+    -label
+    -linedarea
+    -list
+    -menu
+    -menubar
+    -menushell
+    -optionmenu
+    -pane
+    -popupmenu
+    -rowcolumn
+    -scrolledwindow
+    -separator
+    -spacer
+    -stack
+    -text
+    -toggle
+    -toplevel
+    -transient
+
+New 2.x widgets that aren't yet implemented are:
+
+* Container/Icon Gadget that is used to provide both tabular and iconic
+  presentations of a hierarchy of objects that can be used to build
+  file/directory managers
+* Notebook used to create property sheets or multi-page documents with tabs
+* Spinbox used for cycling through sets of choices such as setting dates and times
+* Combo Box/Drop Down Combo Box/Drop Down List are Motif versions of
+  standard PC widgets that allow a user to choose or enter a value
+* Thermometer for showing the progress of a task.

@@ -41,7 +41,7 @@ $menu = give $menubar -Menu, -name => 'Edit';
 	give $menu -Button, -text => 'Paste';
 
 $menu = give $menubar -Menu, -name => 'Help';
-	give $menu -Button, -text => 'Help!';
+	give $menu -Button, -text => 'Help!', -command => sub { print "not so helpful\n"; };
 
 my $subform = give $form1 -Form;
 

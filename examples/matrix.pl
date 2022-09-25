@@ -4,6 +4,7 @@ use blib;
 
 use strict;
 use X11::Motif;
+use X11::Xbae;
 
 my $label_font = '-*-helvetica-bold-r-*-*-*-180-*-*-*-*-*-*';
 my $input_font = '-*-courier-medium-r-*-*-*-180-*-*-*-*-*-*';
@@ -48,7 +49,7 @@ my $table = give $form -Matrix,
 			-cellMarginWidth => 0,
 			-cellMarginHeight => 3,
 			-gridType => 'grid_shadow_out',
-			-verticalScrollBarDisplayPolicy => X::bae::XmDISPLAY_STATIC,
+			-verticalScrollBarDisplayPolicy => X::bae::XmDISPLAY_STATIC(),
 			-defaultActionCallback => \&do_choose_duct_file;
 
 my $exit_button = give $form -Button,

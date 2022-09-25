@@ -35,13 +35,6 @@ Widget Class Listing:
     XmText
     XmTextField
     XmToggleButton
-    XmXrtColumn
-    XmXrtNode
-    XmXrtNodeFolder
-    XmXrtNodeStyle
-    XmXrtOutliner
-    XmXrtToggleButton
-    XtXrtGraph
 
 Resource Class Listing By Type:
 
@@ -111,36 +104,6 @@ Resource Class Listing By Type:
                                              VisibleWhenOff
                                              Waitforwm
                                              WordWrap
-                                             XrtAxisBoundsUseDefault
-                                             XrtAxisLogarithmic
-                                             XrtAxisParams
-                                             XrtAxisParamsUseDefault
-                                             XrtAxisReversed
-                                             XrtAxisShow
-                                             XrtCandleOption
-                                             XrtDataStylesUseDefault
-                                             XrtDebug
-                                             XrtDimensionUseDefault
-                                             XrtDoubleBuffer
-                                             XrtDrawOption
-                                             XrtGearAutoSort
-                                             XrtGearColumnLabelsShow
-                                             XrtGearColumnMoveAllow
-                                             XrtGearCursorTracking
-                                             XrtGearDoubleBuffer
-                                             XrtGearInitialized
-                                             XrtGearRepaint
-                                             XrtGearSelected
-                                             XrtGraphMarginUseDefault
-                                             XrtGraphOption
-                                             XrtGridUseDefault
-                                             XrtHiLoOption
-                                             XrtMarkerShow
-                                             XrtPolarOption
-                                             XrtPositionUseDefault
-                                             XrtPrecisionUseDefault
-                                             XrtRepaint
-                                             XrtTimeFormatUseDefault
   4 BooleanArray                             ButtonLabels
   2 BooleanDimension                         ShowAsDefault
   4 BooleanTable                             SelectedCells
@@ -149,11 +112,8 @@ Resource Class Listing By Type:
                                              Callback
                                              DisarmCallback
                                              ValueChangedCallback
-                                             XrtGearColumnMoveCallback
-                                             XrtGearColumnSelectionCallback
   4 Cardinal                                 ReadOnly
   4 CellTable                                Cells
-  1 Char                                     XrtGearWidthChar
   1 ChildPlacement                           ChildPlacement
   4 Colormap                                 Colormap
   1 CommandWindowLocation                    CommandWindowLocation
@@ -174,75 +134,17 @@ Resource Class Listing By Type:
                                              VisibleColumns
                                              VisibleRows
                                              Width
-                                             XrtBorderWidth
-                                             XrtGearLineWidth
-                                             XrtGearMarginHeight
-                                             XrtGearMarginLeft
-                                             XrtGearMarginRight
-                                             XrtGearMarginWidth
-                                             XrtGearNodeHeight
-                                             XrtGearNodeSpacing
-                                             XrtGearShadowThickness
-                                             XrtGearWidthMaximum
-                                             XrtGearWidthMinimum
   4 EditMode                                 EditMode
   1 FileTypeMask                             FileTypeMask
-  4 Float                                    XrtAxisBounds
-                                             XrtAxisConst
-                                             XrtAxisMult
-                                             XrtAxisParams
-                                             XrtGrid
-                                             XrtMarker
-                                             XrtPieThresholdValue
   4 FontList                                 ButtonFontList
                                              DefaultFontList
                                              FontList
                                              LabelFontList
                                              TextFontList
-                                             XrtGearFontListSelected
   4 Function                                 CreatePopupChildProc
                                              InputCreate
                                              InsertPosition
                                              OutputCreate
-  1 GearAlignment                            XrtGearAlignment
-  1 GearBorderLocation                       XrtGearBorderLocation
-  1 GearBorderType                           XrtGearBorderType
-  4 GearColumn                               XrtGearColumnSelected
-  4 GearColumnList                           XrtGearColumnList
-  1 GearColumnResizePolicy                   XrtGearWidthResizePolicy
-  1 GearDisplayPolicy                        XrtGearScrollBarHorizDisplayPolicy
-                                             XrtGearScrollBarVertDisplayPolicy
-  1 GearFolderState                          XrtGearFolderState
-  4 GearFolderStateMask                      XrtGearFolderStateMask
-  8 GearIcon                                 XrtGearIcon
-  1 GearImportPolicy                         XrtGearNodeImportPolicy
-  1 GearIndicator                            XrtGearIndicator
-  4 GearIndicatorMaskList                    XrtGearIndicatorMaskList
-  4 GearIndicatorPixmapList                  XrtGearIndicatorPixmapList
-  4 GearLabel                                XrtGearLabel
-  1 GearLineStyle                            XrtGearLineStyle
-  4 GearList                                 XrtGearColumnList
-                                             XrtGearNodeVisibleList
-                                             XrtGearSelectedNodeList
-  1 GearMovePolicy                           XrtGearNodeMovePolicy
-  4 GearNodeChildList                        XrtGearNodeChildList
-  4 GearNodeCompareProc                      XrtGearNodeCompareProc
-  4 GearNodeStyle                            XrtGearNodeStyle
-  4 GearNodeStyleList                        XrtGearNodeStyleList
-  4 GearPSFontMapList                        XrtGearPSFontMapList
-  1 GearSelectionPolicy                      XrtGearSelectionPolicy
-  1 GearSelectionRestrictions                XrtGearSelectionRestrictions
-  1 GearSizingPolicy                         XrtGearHeightSizingPolicy
-                                             XrtGearWidthSizingPolicy
-  4 GearState                                XrtGearState
-  4 GearString                               XrtGearString
-  1 GearTextHorizClipPolicy                  XrtGearTextHorizClipPolicy
-  4 GearWidget                               XrtGearNodeCurrent
-                                             XrtGearNodeScrollBarHoriz
-                                             XrtGearNodeTop
-                                             XrtGearScrollBarVert
-  1 GearWidgetResizePolicy                   XrtGearHeightResizePolicy
-                                             XrtGearWidthResizePolicy
   1 GridType                                 GridType
   4 HighlightPixmap                          HighlightPixmap
   4 HighlightTable                           HighlightedCells
@@ -322,28 +224,11 @@ Resource Class Listing By Type:
                                              WidthInc
                                              WinGravity
                                              WmTimeout
-                                             XrtBarClusterOverlap
-                                             XrtBarClusterWidth
-                                             XrtDataset
-                                             XrtGearHeightPreferredCount
-                                             XrtGearHeightVirtual
-                                             XrtGearNodeIndent
-                                             XrtGearNumStates
-                                             XrtGearWidthPreferredCount
-                                             XrtGearWidthVirtual
-                                             XrtGraphDepth
-                                             XrtGraphInclination
-                                             XrtGraphRotation
-                                             XrtMarkerPoint
-                                             XrtMarkerSet
-                                             XrtPieMinSlices
-                                             XrtPrecision
   4 KeySym                                   Mnemonic
   4 LabelAlignment                           LabelAlignment
   4 LabelPosition                            LabelPosition
   1 LabelType                                LabelType
   1 ListSizePolicy                           ListSizePolicy
-  4 Long                                     XrtTimeBase
   4 ManBottomShadowPixmap                    BottomShadowPixmap
   4 ManForegroundPixmap                      LabelPixmap
                                              Pixmap
@@ -367,11 +252,6 @@ Resource Class Listing By Type:
                                              TextBackground
                                              TopShadowColor
                                              TroughColor
-                                             XrtGearBackgroundSelected
-                                             XrtGearForegroundSelected
-                                             XrtGearLineColor
-                                             XrtGearSelectColor
-                                             XrtGearUnselectColor
   4 PixelTable                               Colors
   4 Pixmap                                   IconPixmap
                                              Pixmap
@@ -411,9 +291,6 @@ Resource Class Listing By Type:
                                              NumColumns
                                              RowLabelWidth
                                              Rows
-                                             XrtDimension
-                                             XrtGraphMargin
-                                             XrtPosition
   4 String                                   Accelerator
                                              Accelerators
                                              Geometry
@@ -501,35 +378,6 @@ Resource Class Listing By Type:
   4 XmStringTable                            DirListItems
                                              Items
                                              SelectedItems
-  4 XrtAdjust                                XrtAdjust
-  4 XrtAlign                                 XrtAlign
-  4 XrtAnchor                                XrtAnchor
-  4 XrtAngleUnit                             XrtAngleUnit
-  4 XrtAnnoPlacement                         XrtAnnoPlacement
-  4 XrtAnnotationMethod                      XrtAnnotationMethod
-  4 XrtBorder                                XrtBorder
-  4 XrtData                                  XrtData
-  4 XrtDataStyle                             XrtDataStyle
-  4 XrtDataStyles                            XrtDataStyles
-  4 XrtMarkerMethod                          XrtMarkerMethod
-  4 XrtNumMethod                             XrtNumMethod
-  4 XrtOriginPlacement                       XrtOriginPlacement
-  4 XrtPieOrder                              XrtPieOrder
-  4 XrtPieThresholdMethod                    XrtPieThresholdMethod
-  4 XrtRotate                                XrtRotation
-  4 XrtShading                               XrtGraph3dShading
-  4 XrtString                                XrtAxisLabelFormat
-                                             XrtBackgroundColor
-                                             XrtForegroundColor
-                                             XrtOtherLabel
-                                             XrtTimeFormat
-                                             XrtTitle
-  4 XrtStrings                               XrtPointLabels
-                                             XrtSetLabels
-                                             XrtStrings
-  4 XrtTimeUnit                              XrtTimeUnit
-  4 XrtType                                  XrtType
-  4 XrtValueLabels                           XrtValueLabels
 
 
 Resource Name Listing By Class:
@@ -579,8 +427,7 @@ Resource Name Listing By Class:
     ButtonLabels                             buttonLabels
                                              columnButtonLabels
                                              rowButtonLabels
-    Callback                                 XrtGearNodeMoveCallback
-                                             activateCallback
+    Callback                                 activateCallback
                                              applyCallback
                                              armCallback
                                              browseSelectionCallback

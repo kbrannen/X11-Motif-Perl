@@ -11,6 +11,8 @@
 typedef unsigned long Pixel;
 #endif
 
+extern int _Xdebug;
+
 extern char *XID_Package;
 extern char *Window_Package;
 extern char *Drawable_Package;
